@@ -1,6 +1,9 @@
 /**
  * 线程池
  * 固定容量线程池
+ * 未来结果，代表线程任务执行结束后的结果。获取线程执行结果的方式是通过get方法获取的。get无参，阻塞等待线程执行结束，并得到结果。
+ * get有参，阻塞固定时长，等待线程执行结束后的结果，如果在阻塞时长范围内，线程未执行结束，抛出异常。
+ * 常用方法： T get()  T get(long, TimeUnit)
  */
 package concurrent.t08;
 
@@ -42,6 +45,8 @@ public class Test_03_Future {
 		
 		System.out.println(future.get()); // 获取call方法的返回值。
 		System.out.println(future.isDone());
+
+        service.shutdown();
 	}
 
 }

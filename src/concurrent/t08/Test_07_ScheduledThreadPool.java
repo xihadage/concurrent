@@ -1,6 +1,13 @@
 /**
  * 线程池
  * 计划任务线程池。
+ * 计划任务线程池。可以根据计划自动执行任务的线程池。
+ * scheduleAtFixedRate(Runnable, start_limit, limit, timeunit)
+ * runnable - 要执行的任务。
+ * start_limit - 第一次任务执行的间隔。
+ * limit - 多次任务执行的间隔。
+ * timeunit - 多次任务执行间隔的时间单位。
+ * 使用场景： 计划任务时选用（DelaydQueue），如：电信行业中的数据整理，每分钟整理，没消失整理，每天整理等。
  */
 package concurrent.t08;
 

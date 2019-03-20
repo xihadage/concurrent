@@ -1,6 +1,12 @@
 /**
  * 线程池
  * 分支合并线程池。
+ * 分支合并线程池（mapduce类似的设计思想）。适合用于处理复杂任务。
+ * 初始化线程容量与CPU核心数相关。
+ * 线程池中运行的内容必须是ForkJoinTask的子类型（RecursiveTask,RecursiveAction）。
+ * ForkJoinPool - 分支合并线程池。 可以递归完成复杂任务。要求可分支合并的任务必须是ForkJoinTask类型的子类型。其中提供了分支和合并的能力。ForkJoinTask类型提供了两个抽象子类型，RecursiveTask有返回结果的分支合并任务,RecursiveAction无返回结果的分支合并任务。（Callable/Runnable）compute方法：就是任务的执行逻辑。
+ * ForkJoinPool没有所谓的容量。默认都是1个线程。根据任务自动的分支新的子线程。当子线程任务结束后，自动合并。所谓自动是根据fork和join两个方法实现的。
+ * 应用： 主要是做科学计算或天文计算的。数据分析的。
  */
 package concurrent.t08;
 
@@ -38,7 +44,7 @@ public class Test_08_ForkJoinPool {
 				for(int i = begin; i < end; i++){
 					sum += numbers[i];
 				}
-				// System.out.println("form " + begin + " to " + end + " sum is : " + sum);
+				 System.out.println("form " + begin + " to " + end + " sum is : " + sum);
 				return sum;
 			}else{
 				int middle = begin + (end - begin)/2;
